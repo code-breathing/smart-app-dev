@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice_project/homePage.dart';
+// import 'package:practice_project/missedClass.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +11,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: true, home: HomePage());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
   }
 }
