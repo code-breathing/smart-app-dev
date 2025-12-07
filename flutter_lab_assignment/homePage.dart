@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:practice_project/ProfilePage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,33 +15,29 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.brown,
-        foregroundColor: const Color.fromARGB(255, 106, 173, 236),
         title: Text("Fun Project", style: GoogleFonts.carterOne()),
         actions: [
           IconButton(
             onPressed: () => showSnack(context, "Search tapped"),
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           ),
           IconButton(
             onPressed: () => showSnack(context, "Profile tapped"),
-            icon: Icon(Icons.person),
+            icon: const Icon(Icons.person),
           ),
         ],
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () => showSnack(context, "FAB tapped"),
         tooltip: "Add",
         elevation: 50,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
-
       drawer: Drawer(
         child: Column(
           children: [
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: Colors.green),
+            const UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Colors.black),
               accountName: Text("Name"),
               accountEmail: Text("Email"),
               currentAccountPicture: CircleAvatar(
@@ -49,45 +46,61 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text("HomePage"),
+              leading: const Icon(Icons.home),
+              title: const Text("HomePage"),
               onTap: () => showSnack(context, "Home tapped"),
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.person),
-              title: Text("ProfilePage"),
-              onTap: () => showSnack(context, "Profile tapped"),
+              leading: const Icon(Icons.person),
+              title: const Text("Profile Page"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ProfilePage();
+                    },
+                  ),
+                );
+              },
             ),
-            Spacer(),
-            Divider(),
+            const Divider(),
+            const Spacer(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
+              leading: const Icon(Icons.settings),
+              title: const Text("Settings"),
               onTap: () => showSnack(context, "Settings tapped"),
             ),
             ListTile(
-              leading: Icon(Icons.info),
-              title: Text("About Us"),
-              onTap: () => showSnack(context, "About Us tapped"),
+              leading: const Icon(Icons.info),
+              title: const Text("About Us"),
+              onTap: () => showDialog(
+                context: context,
+                builder: (context) => AboutDialog.adaptive(
+                  applicationName: "Open License.",
+                  applicationVersion: "1.0.0",
+                  applicationIcon: const Icon(Icons.info),
+                  children: const [Text("")],
+                ),
+              ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(10),
               child: Text("© 2025 MashTech", style: TextStyle(fontSize: 12)),
             ),
           ],
         ),
       ),
-
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(20),
-          padding: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.brown, Colors.brown.shade200],
-            ),
-            border: Border.all(color: Colors.red, width: 5),
+            color: Colors.black,
+            border: Border.all(color: Colors.white, width: 1),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(
@@ -96,37 +109,37 @@ class HomePage extends StatelessWidget {
                 "Welcome to homepage",
                 style: GoogleFonts.fanwoodText(fontSize: 40),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset('assets/images/flutter.png', height: 100),
+                child: Image.asset('assets/images/logo.png', height: 100),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton.icon(
                     onPressed: () => showSnack(context, "Elevated tapped"),
-                    icon: Icon(Icons.thumb_up),
-                    label: Text("Elevated"),
+                    icon: const Icon(Icons.thumb_up),
+                    label: const Text("Elevated"),
                   ),
                   TextButton.icon(
                     onPressed: () => showSnack(context, "Text tapped"),
-                    icon: Icon(Icons.text_fields),
-                    label: Text("Texted"),
+                    icon: const Icon(Icons.text_fields),
+                    label: const Text("Texted"),
                   ),
                   OutlinedButton.icon(
                     onPressed: () => showSnack(context, "Outlined tapped"),
-                    icon: Icon(Icons.border_all),
-                    label: Text("Outlined"),
+                    icon: const Icon(Icons.border_all),
+                    label: const Text("Outlined"),
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              Card(
+              const SizedBox(height: 20),
+              const Card(
                 elevation: 4,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
                 child: ListTile(
                   leading: CircleAvatar(child: Icon(Icons.person)),
@@ -134,10 +147,10 @@ class HomePage extends StatelessWidget {
                   subtitle: Text("Backend Architect"),
                 ),
               ),
-              Card(
+              const Card(
                 elevation: 20,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
                 child: ListTile(
                   leading: CircleAvatar(child: Icon(Icons.person)),
@@ -145,7 +158,7 @@ class HomePage extends StatelessWidget {
                   subtitle: Text("Frontend"),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),
